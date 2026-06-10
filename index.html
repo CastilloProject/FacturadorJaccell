@@ -181,6 +181,7 @@
   .inv-title { text-align:right; }
   .inv-title h2 { margin:0; font-size:30px; letter-spacing:1px; color:#f6d46a; }
   .inv-title p { margin:6px 0 0; font-size:14px; color:#f5e8bd; }
+  .inv-title p { white-space:nowrap; }
   .inv-body { padding:28px 34px 34px; }
   .inv-meta { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:18px; }
   .inv-box { border:1px solid #ddd; border-radius:14px; overflow:hidden; }
@@ -560,8 +561,8 @@
     const logo = await loadImage(LOGO_URI);
     roundedRect(ctx, m, 42, 330, 120, 14); ctx.save(); ctx.clip(); drawImageCover(ctx, logo, m, 42, 330, 120); ctx.restore();
     drawText(ctx,"FACTURA DE VENTA", W-m, 85, {size:42, weight:900, color:"#f7d66e", align:"right", baseline:"alphabetic"});
-    drawText(ctx,"No. " + (val("inv_number") || "-"), W-m, 127, {size:24, weight:800, color:"#fff", align:"right"});
-    drawText(ctx,"Fecha: " + formatDate(val("inv_date")), W-m, 160, {size:22, weight:700, color:"#f5dda0", align:"right"});
+    drawText(ctx,"No. " + (val("inv_number") || "-"), W-m, 127, {size:24, weight:800, color:"#fff", align:"right", baseline:"middle"});
+    drawText(ctx,"Fecha: " + formatDate(val("inv_date")), W-m, 160, {size:22, weight:700, color:"#f5dda0", align:"right", baseline:"middle"});
     let y=280;
     function box(x,y,w,h,title) {
       ctx.strokeStyle="#d8d8d8"; ctx.lineWidth=2; roundedRect(ctx,x,y,w,h,16); ctx.stroke();
@@ -635,17 +636,17 @@
     fitText(fctx,val("card_cedula"),       .061,.507,.425,30);
     fitText(fctx,val("card_phone"),        .061,.607,.425,30);
     fitText(fctx,val("card_address"),      .061,.707,.425,28);
-    fitText(fctx,val("card_brandBike"),    .540,.407,.385,30);
-    fitText(fctx,val("card_model"),        .540,.507,.385,30);
-    fitText(fctx,val("card_color"),        .540,.607,.385,30);
-    fitText(fctx,val("card_serial"),       .540,.707,.385,30);
-    fitText(fctx,formatDate(val("card_purchaseDate")).replace("-", ""), .540,.810,.385,30);
-    fitText(fctx,val("card_invoice"),      .540,.909,.385,29);
+    fitText(fctx,val("card_brandBike"),    .580,.407,.385,30);
+    fitText(fctx,val("card_model"),        .580,.507,.385,30);
+    fitText(fctx,val("card_color"),        .580,.607,.385,30);
+    fitText(fctx,val("card_serial"),       .580,.707,.385,30);
+    fitText(fctx,formatDate(val("card_purchaseDate")).replace("-", ""), .560,.805,.385,30);
+    fitText(fctx,val("card_invoice"),      .550,.895,.385,29);
 
-    fitText(bctx,val("card_whatsapp"),        .230,.756,.215,27,{weight:700});
-    fitText(bctx,val("card_businessAddress"), .205,.844,.245,25,{weight:700});
-    fitText(bctx,val("card_social"),          .612,.756,.175,27,{weight:700});
-    fitText(bctx,val("card_hours"),           .562,.844,.235,25,{weight:700});
+    fitText(bctx,val("card_whatsapp"),        .185,.74,.215,27,{weight:700});
+    fitText(bctx,val("card_businessAddress"), .185,.82,.245,25,{weight:700});
+    fitText(bctx,val("card_social"),          .62,.74,.175,27,{weight:700});
+    fitText(bctx,val("card_hours"),           .58,.82,.235,25,{weight:700});
     drawQrArea(bctx, qrDataUrl ? await loadImage(qrDataUrl) : null);
     saveData(false);
   }
